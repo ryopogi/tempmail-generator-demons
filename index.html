@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Casino Royal - Free 100 Pesos!</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+            color: white;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        .logo {
+            font-size: 2.5rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #ffd700, #ffed4e, #ffd700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+        }
+
+        .subtitle {
+            color: #ccc;
+            font-size: 1rem;
+        }
+
+        .bonus-card {
+            background: linear-gradient(145deg, #2c1810, #1a0f08);
+            border: 2px solid #ffd700;
+            border-radius: 20px;
+            padding: 30px 20px;
+            text-align: center;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.3);
+            animation: pulse 2s infinite;
+        }
+
+        .bonus-amount {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #ffd700;
+            margin-bottom: 10px;
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
+        }
+
+        .bonus-text {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        .claim-btn {
+            background: linear-gradient(45deg, #ff6b35, #f7931e);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 5px 15px rgba(255, 107, 53, 0.4);
+        }
+
+        .claim-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 107, 53, 0.6);
+        }
+
+        .games-section {
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            text-align: center;
+            color: #ffd700;
+        }
+
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .game-card {
+            background: linear-gradient(145deg, #2a2a3e, #1e1e2e);
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+        }
+
+        .game-card:hover {
+            transform: scale(1.05);
+            border-color: #ffd700;
+            box-shadow: 0 5px 20px rgba(255, 215, 0, 0.3);
+        }
+
+        .game-icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .game-name {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .features {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 30px;
+            backdrop-filter: blur(10px);
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            padding: 10px;
+            background: rgba(255, 215, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        .feature-icon {
+            margin-right: 15px;
+            font-size: 1.2rem;
+            color: #ffd700;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            color: #888;
+            font-size: 0.9rem;
+        }
+
+        .login-section {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            border-radius: 10px;
+            background: rgba(0, 0, 0, 0.3);
+            color: white;
+            font-size: 1rem;
+        }
+
+        .input-group input::placeholder {
+            color: #ccc;
+        }
+
+        .login-btn {
+            width: 100%;
+            background: linear-gradient(45deg, #4CAF50, #45a049);
+            color: white;
+            border: none;
+            padding: 12px;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 10px;
+        }
+
+        .register-btn {
+            width: 100%;
+            background: transparent;
+            color: #ffd700;
+            border: 2px solid #ffd700;
+            padding: 12px;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.02);
+            }
+        }
+
+        .floating-chips {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .chip {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background: #ffd700;
+            border-radius: 50%;
+            opacity: 0.7;
+            animation: float 6s infinite linear;
+        }
+
+        @keyframes float {
+            from {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.7;
+            }
+            90% {
+                opacity: 0.7;
+            }
+            to {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-chips" id="floatingChips"></div>
+    
+    <div class="container">
+        <div class="header">
+            <div class="logo">🎰 CASINO ROYAL</div>
+            <div class="subtitle">Your Lucky Casino Adventure</div>
+        </div>
+
+        <div class="bonus-card">
+            <div class="bonus-amount">₱100</div>
+            <div class="bonus-text">FREE WELCOME BONUS</div>
+            <button class="claim-btn" onclick="claimBonus()">Claim Now!</button>
+        </div>
+
+        <div class="login-section">
+            <div class="input-group">
+                <input type="text" placeholder="Username or Email" id="username">
+            </div>
+            <div class="input-group">
+                <input type="password" placeholder="Password" id="password">
+            </div>
+            <button class="login-btn" onclick="login()">Login & Play</button>
+            <button class="register-btn" onclick="register()">Create Account</button>
+        </div>
+
+        <div class="games-section">
+            <div class="section-title">🎮 Popular Games</div>
+            <div class="games-grid">
+                <div class="game-card" onclick="playGame('slots')">
+                    <div class="game-icon">🎰</div>
+                    <div class="game-name">Slots</div>
+                    <div>Jackpot Ready!</div>
+                </div>
+                <div class="game-card" onclick="playGame('poker')">
+                    <div class="game-icon">🃏</div>
+                    <div class="game-name">Poker</div>
+                    <div>Texas Hold'em</div>
+                </div>
+                <div class="game-card" onclick="playGame('blackjack')">
+                    <div class="game-icon">🂡</div>
+                    <div class="game-name">Blackjack</div>
+                    <div>Beat the Dealer</div>
+                </div>
+                <div class="game-card" onclick="playGame('roulette')">
+                    <div class="game-icon">🎯</div>
+                    <div class="game-name">Roulette</div>
+                    <div>Spin to Win</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="features">
+            <div class="section-title">✨ Why Choose Us?</div>
+            <div class="feature-item">
+                <div class="feature-icon">💰</div>
+                <div>Instant ₱100 Welcome Bonus</div>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">🔒</div>
+                <div>100% Safe & Secure Gaming</div>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">⚡</div>
+                <div>Instant Deposits & Withdrawals</div>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">🎁</div>
+                <div>Daily Bonuses & Rewards</div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>🔞 Must be 18+ to play. Gamble responsibly.</p>
+            <p>© 2024 Casino Royal. All rights reserved.</p>
+        </div>
+    </div>
+
+    <script>
+        // Floating chips animation
+        function createFloatingChip() {
+            const chip = document.createElement('div');
+            chip.className = 'chip';
+            chip.style.left = Math.random() * 100 + '%';
+            chip.style.animationDelay = Math.random() * 2 + 's';
+            document.getElementById('floatingChips').appendChild(chip);
+            
+            setTimeout(() => {
+                chip.remove();
+            }, 6000);
+        }
+
+        setInterval(createFloatingChip, 1000);
+
+        // App functionality
+        let bonusClaimed = false;
+        let loggedIn = false;
+
+        function claimBonus() {
+            if (!loggedIn) {
+                alert('Please login first to claim your bonus!');
+                return;
+            }
+            
+            if (bonusClaimed) {
+                alert('Bonus already claimed! Check your account balance.');
+                return;
+            }
+            
+            bonusClaimed = true;
+            alert('🎉 Congratulations! ₱100 bonus added to your account!');
+            
+            // Update button
+            const btn = document.querySelector('.claim-btn');
+            btn.textContent = 'Bonus Claimed!';
+            btn.style.background = '#4CAF50';
+            btn.disabled = true;
+        }
+
+        function login() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            
+            if (!username || !password) {
+                alert('Please enter both username and password!');
+                return;
+            }
+            
+            loggedIn = true;
+            alert('Welcome back! You are now logged in.');
+            
+            // Update login section
+            const loginSection = document.querySelector('.login-section');
+            loginSection.innerHTML = `
+                <div style="text-align: center; padding: 20px;">
+                    <div style="color: #4CAF50; font-size: 1.2rem; margin-bottom: 10px;">✅ Logged in as ${username}</div>
+                    <button onclick="logout()" style="background: transparent; border: 1px solid #ff6b35; color: #ff6b35; padding: 8px 20px; border-radius: 20px; cursor: pointer;">Logout</button>
+                </div>
+            `;
+        }
+
+        function register() {
+            alert('🎰 Registration form coming soon! For now, use any username/password to login.');
+        }
+
+        function logout() {
+            loggedIn = false;
+            bonusClaimed = false;
+            location.reload();
+        }
+
+        function playGame(gameType) {
+            if (!loggedIn) {
+                alert('Please login first to play games!');
+                return;
+            }
+            
+            const games = {
+                slots: '🎰 Spinning the reels... You won ₱25!',
+                poker: '🃏 Great hand! You won ₱50!',
+                blackjack: '🂡 Blackjack! You won ₱75!',
+                roulette: '🎯 Lucky number! You won ₱30!'
+            };
+            
+            setTimeout(() => {
+                alert(games[gameType]);
+            }, 1000);
+            
+            alert('🎮 Loading ' + gameType + '...');
+        }
+
+        // Add some sparkle effects
+        function addSparkle() {
+            const sparkle = document.createElement('div');
+            sparkle.innerHTML = '✨';
+            sparkle.style.position = 'absolute';
+            sparkle.style.left = Math.random() * 100 + '%';
+            sparkle.style.top = Math.random() * 100 + '%';
+            sparkle.style.fontSize = '1rem';
+            sparkle.style.pointerEvents = 'none';
+            sparkle.style.animation = 'fadeInDown 2s ease-out forwards';
+            
+            document.body.appendChild(sparkle);
+            
+            setTimeout(() => sparkle.remove(), 2000);
+        }
+
+        setInterval(addSparkle, 3000);
+    </script>
+</body>
+</html>
