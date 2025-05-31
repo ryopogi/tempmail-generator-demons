@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-Frame-Options" content="DENY" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Autoshare by Krisanto</title>
+  <link rel="icon" href="https://i.imgur.com/bIOj3vS.jpeg" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Splash Screen -->
+  <div id="splash-screen">
+    <div class="splash-content">
+      <img src="https://facebooktools.gleeze.com/logo.png" alt="Logo" class="splash-logo" />
+      <h1>FACEBOOK TOOLS</h1>
+      <p class="dev">Krisanto Developer</p>
+      <div class="dots"><span>.</span><span>.</span><span>.</span></div>
+      <p class="loading-text">LOADING PLEASE WAIT...<br>We're preparing everything for you.</p>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="container">
+    <div class="mode-switch" id="mode-switch" style="display: none;">🌙</div>
+    <h3>KRISANTO SHAREBOOSTER</h3>
+
+    <a href="#" class="open-popup">🎬 Watch FBSTATE Utility Tutorial</a>
+
+    <!-- Tutorial Popup -->
+    <div class="popup-overlay" id="videoPopup">
+      <div class="popup-content">
+        <a href="#" class="close-link" id="closePopup">&times;</a>
+        <video id="popupVideo" controls autoplay>
+          <source src="tutorial.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </div>
+
+    <form id="share-boost-form">
+      <label for="cookies">FBSTATE UTILITY:</label>
+      <input type="text" id="cookies" placeholder="Enter Fbstate" required />
+
+      <label for="urls">POST URL:</label>
+      <input type="text" id="urls" placeholder="Enter Link" required />
+
+      <label for="amounts">AMOUNT:</label>
+      <input type="number" id="amounts" placeholder="Enter Amount" required />
+
+      <label for="intervals" style="display:none;">DELAY (1):</label>
+      <input type="number" id="intervals" placeholder="Enter Delay" value="1" style="display:none;" />
+
+      <label for="server">SELECT SERVER:</label>
+      <select id="server">
+        <option value="server1">Server 1</option>
+        <option value="server2">Server 2</option>
+        <option value="server3">Server 3</option>
+      </select>
+
+      <label for="premium-token">PREMIUM TOKEN:</label>
+      <input type="password" id="krisanto_00" placeholder="Enter Premium Token" required />
+
+      <button type="submit" class="btn" id="submit-button" disabled>Submit</button>
+    </form>
+
+    <div id="responseModal" class="response-modal">
+      <div id="responseMessage"></div>
+    </div>
+  </div>
+
+  <script>
+    // Splash screen fade-out
+    window.addEventListener('load', () => {
+      const splash = document.getElementById('splash-screen');
+      setTimeout(() => {
+        splash.classList.add('fade-out');
+      }, 2000);
+    });
+
+    // Video popup
+    const popup = document.getElementById('videoPopup');
+    const openLink = document.querySelector('.open-popup');
+    const closeLink = document.getElementById('closePopup');
+    const video = document.getElementById('popupVideo');
+
+    openLink.addEventListener('click', function (e) {
+      e.preventDefault();
+      popup.style.display = 'flex';
+      video.currentTime = 0;
+      video.play();
+    });
+
+    closeLink.addEventListener('click', function (e) {
+      e.preventDefault();
+      popup.style.display = 'none';
+      video.pause();
+    });
+
+    popup.addEventListener('click', function (e) {
+      if (!e.target.closest('.popup-content')) {
+        popup.style.display = 'none';
+        video.pause();
+      }
+    });
+  </script>
+
+  <script src="script.js"></script>
+</body>
+</html>
